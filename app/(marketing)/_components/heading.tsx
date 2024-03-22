@@ -1,12 +1,12 @@
 "use client";
 
 import { useConvexAuth } from "convex/react";
+import Link from "next/link";
+import { SignInButton } from "@clerk/clerk-react";
 
 import { Spinner } from "@/components/spinner";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { SignInButton } from "@clerk/clerk-react";
 
 export default function Heading() {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -27,8 +27,10 @@ export default function Heading() {
       )}
       {isAuthenticated && !isLoading && (
         <Button asChild>
-          <Link href="/documents">Enter Ocean</Link>
-          <ArrowRight className="h-4 w-4 ml-2" />
+          <Link href="/documents">
+            Enter Ocean
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Link>
         </Button>
       )}
       {!isAuthenticated && !isLoading && (
