@@ -5,6 +5,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { ChevronsLeft, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import UserItem from "./user-item";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -16,10 +17,7 @@ export default function Navigation() {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
-  useEffect(() => {
-    isMobile ? collapse() : resetWidth();
-  }, [isMobile]);
-
+  useEffect(() => (isMobile ? collapse() : resetWidth()), [isMobile]);
   useEffect(() => {
     if (isMobile) collapse();
   }, [pathname, isMobile]);
@@ -106,7 +104,7 @@ export default function Navigation() {
           <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents</p>
