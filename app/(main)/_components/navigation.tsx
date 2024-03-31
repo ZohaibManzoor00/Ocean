@@ -2,8 +2,12 @@
 
 import { useRef, ElementRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
 import { usePathname } from "next/navigation";
 import { useMutation } from "convex/react";
+import { toast } from "sonner";
+
 import {
   ChevronsLeft,
   MenuIcon,
@@ -13,8 +17,6 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-import { toast } from "sonner";
-
 import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 import Item from "./item";
@@ -26,9 +28,10 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import TrashBox from "./trash-box";
-import { useSearch } from "@/hooks/use-search";
+
 
 export default function Navigation() {
+  const settings = useSettings()
   const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -143,7 +146,7 @@ export default function Navigation() {
             isSearch
             icon={Search}
           />
-          <Item onClick={() => {}} label="Settings" icon={Settings} />
+          <Item onClick={settings.onOpen} label="Settings" icon={Settings} />
           <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
