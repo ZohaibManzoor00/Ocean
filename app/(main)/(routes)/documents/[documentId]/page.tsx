@@ -1,5 +1,6 @@
 "use client";
 
+import { Cover } from "@/components/cover";
 import Toolbar from "@/components/toolbar";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -12,13 +13,13 @@ export default function DocumentIdPage({
   params: { documentId },
 }: DocumentIdPageProps) {
   const document = useQuery(api.documents.getById, { documentId });
-  
+
   if (document === undefined) return <div>Loading...</div>;
   if (document === undefined) return <div>Not found</div>;
 
   return (
     <div className="pb-40">
-      <div className="h-[35vh]" />
+      <Cover url={document.coverImage}/>
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
         <Toolbar initialData={document} />
       </div>
