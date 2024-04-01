@@ -4,7 +4,7 @@ import { useRef, ElementRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
 
@@ -31,6 +31,7 @@ import TrashBox from "./trash-box";
 import Navbar from "./navbar";
 
 export default function Navigation() {
+  const router = useRouter()
   const settings = useSettings();
   const search = useSearch();
   const params = useParams();
@@ -111,7 +112,7 @@ export default function Navigation() {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then(documentId => router.push(`/documents/${documentId}`))
     toast.promise(promise, {
       loading: "Creating a new note...",
       success: "New note created!",
