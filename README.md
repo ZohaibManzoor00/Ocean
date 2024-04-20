@@ -75,12 +75,17 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 ```
 
-Step 3 - Setup Convex
+Step 3 - Install Dependencies
+```bash
+npm i 
+```
+
+Step 4 - Setup Convex
 ```bash
 npx convex dev
 ```
 
-Step 4 - Install dependencies & Run app locally
+Step 5 - Run app locally
 ```bash
-npm i && npm run dev
+npm run dev
 ```
