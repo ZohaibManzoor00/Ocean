@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ocean
 
-## Getting Started
+A full-stack web application enabling company-wide documentation management for 4+ cross-functional teams including leadership, recruiting, engineering, and partnerships. [Live Link](https://bit.ly/ocean-notes)<br/>
+<br/>
 
-First, run the development server:
+<img src="./public/ocean.jpg" alt="genius-logo" width="300"><br/>
 
+### Functionality
+- Notion-style editor 📝 
+- File upload, deletion, replacement 📄
+- Infinite children documents 🌲
+- Trash can & soft delete 🗑️
+
+
+### Demo
+
+1. Sign In
+
+<img src="genius_screenshots/sign-in.gif" alt="sign in" width="600"><br/>
+
+2. Conversation Generation
+
+<img src="genius_screenshots/conversation-generation.gif" alt="conversation generation" width="600"><br/>
+
+3. Music Generation
+
+<img src="genius_screenshots/music-generation.gif" alt="music generation" width="600"><br/>
+
+4. Image Generation
+
+<img src="genius_screenshots/image-generation.gif" alt="image generation" width="600"><br/>
+
+5. Video Generation
+
+<img src="genius_screenshots/video-generation.gif" alt="video generation" width="600"><br/>
+
+
+6. Code Generation
+
+<img src="genius_screenshots/code-generation.gif" alt="code generation" width="600"><br/>
+
+7. Upgrade to Pro
+
+<img src="genius_screenshots/upgrade-pro.gif" alt="upgrade pro" width="600"><br/>
+
+### System Design
+<img src="genius_screenshots/genius-system.png" alt="genius system design"><br/>
+
+
+### Technologies Used
+
+- TypeScript
+- React
+- Next.js
+- Prisma
+- Convex 
+- EdgeStore 
+
+### How to Run Locally
+
+Step 1 - Clone the repository in a new directory:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:ZohaibManzoor00/Ocean.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Step 2 - Create .env file in root directory with the following info:
+```bash
+# Clerk with Next.js. Docs (clerk.com/docs/quickstarts/nextjs)
+NEXT_PUBLIC_CONVEX_URL=
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+EDGE_STORE_ACCESS_KEY=
+EDGE_STORE_SECRET_KEY=
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+```
 
-## Learn More
+Step 3 - Setup Convex
+```bash
+npx convex dev
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Step 4 - Install dependencies & Run app locally
+```bash
+npm i && npm run dev
+```
