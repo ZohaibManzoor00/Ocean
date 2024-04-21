@@ -3,13 +3,22 @@
 A full-stack web application enabling company-wide documentation management for 4+ cross-functional teams including leadership, recruiting, engineering, and partnerships. Tech Stack - TypeScript, React, Next.js, Prisma, and Convex. [Live Link](https://bit.ly/ocean-notes)<br/>
 <br/>
 
-<img src="./public/ocean.jpg" alt="genius-logo" width="300"><br/>
+<img src="./public/ocean.jpg" alt="ocean-logo" width="300"><br/>
 
 ### Functionality
 - Notion-style editor 📝 
 - File upload, deletion, replacement 📄
 - Infinite children documents 🌲
 - Trash can & soft delete 🗑️
+
+### Demo 
+
+#### Home Page 
+<img src="./public/homepage.png" alt="homepage" width="700"><br/>
+
+#### Documents Page 
+<img src="./public/page.png" alt="documents" width="700"><br/>
+
 
 ### Technologies Used
 
