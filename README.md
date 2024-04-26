@@ -29,6 +29,9 @@ A full-stack web application enabling company-wide documentation management for 
 #### Dark Mode
 <img src="./public/documents-page-dark.png" alt="documents-page-dark" width="700"><br/>
 
+### Search Documents 
+<img src="./public/search-page.png" alt="search-page" width="700"><br/>
+
 ## 🛠️ Built With
 
 - **TypeScript** 🎯 
