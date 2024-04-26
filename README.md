@@ -82,7 +82,3 @@ npx convex dev
 ```bash
 npm run dev
 ```
-
-
-### Dive into Ocean and transform how your team manages documentation today! 🤩
-
