@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Heading() {
   const { isAuthenticated, isLoading } = useConvexAuth();
+
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
@@ -21,7 +22,7 @@ export default function Heading() {
         better, faster work happens.
       </h3>
       {isLoading && (
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center h-10">
           <Spinner size="lg" />
         </div>
       )}
