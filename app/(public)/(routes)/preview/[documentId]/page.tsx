@@ -20,7 +20,7 @@ export default function DocumentIdPage({
     () => dynamic(() => import("@/components/editor"), { ssr: false }), []
   );
 
-  const document = useQuery(api.documents.getById, { documentId });
+  const document = useQuery(api.documents.getById, { documentId }); // TODO: mismatch type for doc"id"
 
   const update = useMutation(api.documents.update);
 
