@@ -7,11 +7,7 @@ import { SearchCommand } from "@/components/search-command";
 import { Spinner } from "@/components/spinner";
 import Navigation from "./_components/navigation";
 
-export default function MainLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MainLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
   if (isLoading)

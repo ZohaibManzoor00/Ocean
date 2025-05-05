@@ -13,6 +13,7 @@ import { Id } from "@/convex/_generated/dataModel";
 interface DocumentIdPageProps {
   params: { documentId: Id<"documents"> };
 }
+
 export default function DocumentIdPage({
   params: { documentId },
 }: DocumentIdPageProps) {
