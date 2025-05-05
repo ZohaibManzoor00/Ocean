@@ -8,6 +8,7 @@ import { ModalProvider } from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
 
 import "./globals.css";
+import { PostHogProvider } from "./post-hog-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,7 +50,7 @@ export default function RootLayout({
             >
               <Toaster position="bottom-center" />
               <ModalProvider />
-              {children}
+              <PostHogProvider>{children}</PostHogProvider>
             </ThemeProvider>
           </EdgeStoreProvider>
         </ConvexClientProvider>
