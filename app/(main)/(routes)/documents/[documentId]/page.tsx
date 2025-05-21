@@ -1,5 +1,3 @@
-"use client";
-
 import { useMutation, useQuery } from "convex/react";
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
@@ -9,49 +7,27 @@ import Toolbar from "@/components/toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import Document from "./_components/document";
+
+import {preloadQuery} from "convex/nextjs"
+import { auth } from "@clerk/nextjs/server"
 
 interface DocumentIdPageProps {
-  params: { documentId: Id<"documents"> };
+  params: Promise<{ documentId: Id<"documents"> }>;
 }
-export default function DocumentIdPage({
-  params: { documentId },
+
+export default async function DocumentIdPage({
+  params,
 }: DocumentIdPageProps) {
-  const Editor = useMemo(
-    () => dynamic(() => import("@/components/editor"), { ssr: false }), []
-  );
+  const { documentId } = await params
+  const { getToken } = await auth()
 
-  const document = useQuery(api.documents.getById, { documentId });
+  const token = (await getToken({ template: "convex" })) ?? undefined;
+  if (!token) throw new Error("")
+  
+  const preloadDocument = await preloadQuery(api.documents.getById, { documentId }, { token })
+  if (!preloadDocument) throw new Error('Document not found')
 
-  const update = useMutation(api.documents.update);
+  return <Document preloadedDocument={preloadDocument}/>
 
-  const onChange = (content: string) => {
-    update({ id: documentId, content });
-  };
-
-  if (document === undefined)
-    return (
-      <div>
-        <Cover.Skeleton />
-        <div className="md:max-w-3xl lg:max-w-4xl mx-auto mt-10">
-          <div className="space-y-4 pl-8 pt-4">
-            <Skeleton className="h-14 w-[50%]" />
-            <Skeleton className="h-4 w-[80%]" />
-            <Skeleton className="h-4 w-[40%]" />
-            <Skeleton className="h-4 w-[60%]" />
-          </div>
-        </div>
-      </div>
-    );
-
-  if (document === undefined) return <div>Not found</div>;
-
-  return (
-    <div className="pb-40">
-      <Cover url={document.coverImage} />
-      <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-        <Toolbar initialData={document} />
-        <Editor onChange={onChange} initialContent={document.content} />
-      </div>
-    </div>
-  );
 }
